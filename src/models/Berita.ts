@@ -24,7 +24,8 @@ const BeritaSchema = new mongoose.Schema({
     default: Date.now
   }
 }, {
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  collection: 'beritas'
 });
 
 export default mongoose.models.Berita || mongoose.model('Berita', BeritaSchema);

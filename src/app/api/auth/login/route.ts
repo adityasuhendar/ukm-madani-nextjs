@@ -14,6 +14,7 @@ const loginAttempts: { [key: string]: { count: number; lastAttempt: number } } =
 function getRealIP(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');
   const real = request.headers.get('x-real-ip');
+  const cloudflare = request.headers.get('cf-connecting-ip');
   
   if (forwarded) {
     return forwarded.split(',')[0].trim();
@@ -23,7 +24,12 @@ function getRealIP(request: NextRequest): string {
     return real.trim();
   }
   
-  return request.ip || 'unknown';
+  if (cloudflare) {
+    return cloudflare.trim();
+  }
+  
+  // NextRequest doesn't have .ip property, return fallback
+  return 'unknown';
 }
 
 function isLockedOut(ip: string): boolean {
@@ -172,7 +178,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error: unknown) {
     console.error('Login error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     
     return NextResponse.json(
       { success: false, message: 'Terjadi kesalahan server. Silakan coba lagi.' },

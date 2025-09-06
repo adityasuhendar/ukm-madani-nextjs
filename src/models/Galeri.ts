@@ -24,7 +24,8 @@ const GaleriSchema = new mongoose.Schema({
     default: 'draft'
   }
 }, {
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  collection: 'galeris'
 });
 
 export default mongoose.models.Galeri || mongoose.model('Galeri', GaleriSchema);

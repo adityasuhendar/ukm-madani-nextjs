@@ -24,7 +24,8 @@ const ArtikelSchema = new mongoose.Schema({
     default: Date.now
   }
 }, {
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  collection: 'artikels'
 });
 
 export default mongoose.models.Artikel || mongoose.model('Artikel', ArtikelSchema);

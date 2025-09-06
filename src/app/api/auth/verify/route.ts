@@ -15,7 +15,12 @@ export async function GET(request: NextRequest) {
     }
 
     // Verify JWT token
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    const decoded = jwt.verify(token, JWT_SECRET) as {
+      userId: string;
+      username: string;
+      nama: string;
+      email: string;
+    };
 
     return NextResponse.json({
       success: true,
@@ -27,7 +32,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { success: false, message: 'Invalid token' },
       { status: 401 }

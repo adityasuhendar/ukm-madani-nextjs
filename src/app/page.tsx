@@ -38,6 +38,7 @@ export default function HomePage() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToTop = () => {
@@ -60,6 +61,15 @@ export default function HomePage() {
       const data = await response.json();
       if (data.success) {
         setBeritaTerbaru(data.data);
+        // If no data found, try to seed the database
+        if (data.data.length === 0) {
+          console.log('No berita found, attempting to seed database...');
+          await fetch('/api/seed-data');
+          // Retry fetching after seeding
+          setTimeout(() => {
+            fetchBerita();
+          }, 2000);
+        }
       }
     } catch (error) {
       console.error('Error fetching berita:', error);
@@ -76,6 +86,15 @@ export default function HomePage() {
       const data = await response.json();
       if (data.success) {
         setArtikelTerbaru(data.data);
+        // If no data found, try to seed the database
+        if (data.data.length === 0) {
+          console.log('No artikel found, attempting to seed database...');
+          await fetch('/api/seed-data');
+          // Retry fetching after seeding
+          setTimeout(() => {
+            fetchArtikel();
+          }, 2000);
+        }
       }
     } catch (error) {
       console.error('Error fetching artikel:', error);
@@ -92,6 +111,15 @@ export default function HomePage() {
       const data = await response.json();
       if (data.success) {
         setGaleriTerbaru(data.data);
+        // If no data found, try to seed the database
+        if (data.data.length === 0) {
+          console.log('No galeri found, attempting to seed database...');
+          await fetch('/api/seed-data');
+          // Retry fetching after seeding
+          setTimeout(() => {
+            fetchGaleri();
+          }, 2000);
+        }
       }
     } catch (error) {
       console.error('Error fetching galeri:', error);

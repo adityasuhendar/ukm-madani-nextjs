@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function AdminLogin() {
   const [username, setUsername] = useState('');
@@ -51,7 +51,7 @@ export default function AdminLogin() {
         // Clear password field on failed attempt
         setPassword('');
       }
-    } catch (error) {
+    } catch {
       setError('Terjadi kesalahan. Silakan coba lagi.');
       setAttempts(prev => prev + 1);
     } finally {
@@ -178,13 +178,13 @@ export default function AdminLogin() {
         </form>
 
         {/* Back Link */}
-        <a
+        <Link
           href="/"
           className="inline-flex items-center gap-2 mt-8 text-green-800 hover:text-yellow-600 font-medium px-4 py-2 rounded-full hover:bg-yellow-50 transition-all duration-300 hover:transform hover:-translate-y-1"
         >
           <i className="fas fa-arrow-left"></i>
           Kembali ke Website
-        </a>
+        </Link>
 
         {/* Security Features */}
         <div className="mt-8 pt-6 border-t border-gray-200">

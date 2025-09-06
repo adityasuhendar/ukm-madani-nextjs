@@ -3,6 +3,14 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+interface User {
+  id: string;
+  username: string;
+  nama: string;
+  email: string;
+  role?: string;
+}
+
 interface DashboardStats {
   totalBerita: number;
   totalArtikel: number;
@@ -11,7 +19,7 @@ interface DashboardStats {
 }
 
 export default function AdminDashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [stats, setStats] = useState<DashboardStats>({
     totalBerita: 0,
     totalArtikel: 0,
@@ -35,7 +43,7 @@ export default function AdminDashboard() {
         
         // Load dashboard stats
         await loadStats();
-      } catch (error) {
+      } catch {
         router.push('/admin');
       } finally {
         setLoading(false);

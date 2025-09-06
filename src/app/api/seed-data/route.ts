@@ -9,7 +9,24 @@ export async function GET() {
   try {
     await connectDB();
 
-    // Clear existing data (optional, for fresh seeding)
+    // Check if data already exists
+    const beritaCount = await Berita.countDocuments();
+    const artikelCount = await Artikel.countDocuments();
+    const galeriCount = await Galeri.countDocuments();
+
+    if (beritaCount > 0 && artikelCount > 0 && galeriCount > 0) {
+      return NextResponse.json({
+        success: true,
+        message: 'Data already exists',
+        data: {
+          berita: beritaCount,
+          artikel: artikelCount,
+          galeri: galeriCount
+        }
+      });
+    }
+
+    // Only clear and seed if data doesn't exist
     await Berita.deleteMany({});
     await Artikel.deleteMany({});
     await Galeri.deleteMany({});
