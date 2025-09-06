@@ -381,17 +381,29 @@ export default function HomePage() {
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Kritik & Saran Website</h3>
                 <p className="text-gray-500 mb-6">Masukan Anda sangat berharga bagi perkembangan website kami.</p>
-<iframe 
-  src="https://forms.gle/QwkuV5RcX61eqcN2A"
-  width="100%"
-  height={400}
-  frameBorder={0}
-  marginHeight={0}
-  marginWidth={0}
-  className="rounded-md"
->
-  Loading…
-</iframe>
+                
+                <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-2xl border-2 border-dashed border-green-200 text-center">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-comment-dots text-white text-2xl"></i>
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-800 mb-2">Berikan Feedback Anda</h4>
+                    <p className="text-gray-600 text-sm">Klik tombol di bawah untuk mengisi form kritik dan saran</p>
+                  </div>
+                  
+                  <a 
+                    href="https://forms.gle/QwkuV5RcX61eqcN2A" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <i className="fab fa-google text-xl"></i>
+                    <span>Buka Google Forms</span>
+                    <i className="fas fa-external-link-alt text-sm"></i>
+                  </a>
+                  
+                  <p className="text-xs text-gray-500 mt-4">Form akan terbuka di tab baru</p>
+                </div>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Informasi Rekening</h3>
