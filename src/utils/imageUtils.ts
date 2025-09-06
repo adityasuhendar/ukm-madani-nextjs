@@ -23,24 +23,24 @@ export function generatePlaceholder(type: 'berita' | 'artikel' | 'galeri' = 'ber
   const initial = title.trim() ? title.trim().charAt(0).toUpperCase() : 
     (type === 'artikel' ? '📄' : type === 'galeri' ? '📸' : '📰');
   
-  const svg = `
-    <svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:${color.bg};stop-opacity:1" />
-          <stop offset="100%" style="stop-color:${color.bg}80;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect width="400" height="250" fill="url(#grad1)"/>
-      <text x="200" y="125" text-anchor="middle" dominant-baseline="middle" 
-            fill="${color.text}" font-family="Arial" font-size="60" font-weight="bold">
-            ${initial}
-      </text>
-      <text x="200" y="170" text-anchor="middle" fill="${color.text}" 
-            font-family="Arial" font-size="14" opacity="0.8">
-            ${type.toUpperCase()}
-      </text>
-    </svg>`;
+  // Create a simple SVG data URL instead of external placeholder
+  const svg = `<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad${Date.now()}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:${color.bg};stop-opacity:1" />
+        <stop offset="100%" style="stop-color:${color.bg}80;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect width="400" height="250" fill="url(#grad${Date.now()})"/>
+    <text x="200" y="125" text-anchor="middle" dominant-baseline="middle" 
+          fill="${color.text}" font-family="Arial" font-size="60" font-weight="bold">
+          ${initial}
+    </text>
+    <text x="200" y="170" text-anchor="middle" fill="${color.text}" 
+          font-family="Arial" font-size="14" opacity="0.8">
+          ${type.toUpperCase()}
+    </text>
+  </svg>`;
   
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }

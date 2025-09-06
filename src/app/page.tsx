@@ -122,9 +122,9 @@ export default function HomePage() {
               <Image 
                 src="/images/logo-madani.png" 
                 alt="UKM Madani Logo"
-                width={headerScrolled ? 32 : 40}
-                height={headerScrolled ? 32 : 40}
-                className="float-animation object-contain transition-all duration-300"
+                width={headerScrolled ? 24 : 32}
+                height={headerScrolled ? 24 : 32}
+                className="object-contain transition-all duration-300 animate-float"
               />
               <span>UKM MADANI</span>
             </a>
@@ -139,13 +139,13 @@ export default function HomePage() {
             </div>
             
             <button 
-              className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="lg:hidden p-3 hover:bg-gray-100 rounded-xl transition-all duration-300 group relative"
               onClick={() => setMobileMenuOpen(true)}
             >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                <span className="block w-full h-0.5 bg-gray-800"></span>
-                <span className="block w-full h-0.5 bg-gray-800"></span>
-                <span className="block w-full h-0.5 bg-gray-800"></span>
+              <div className="w-6 h-5 flex flex-col justify-center gap-1">
+                <span className="block w-full h-0.5 bg-gray-800 rounded-full transition-all duration-300 group-hover:bg-green-800"></span>
+                <span className="block w-4 h-0.5 bg-gray-800 rounded-full transition-all duration-300 group-hover:bg-green-800 group-hover:w-full"></span>
+                <span className="block w-full h-0.5 bg-gray-800 rounded-full transition-all duration-300 group-hover:bg-green-800"></span>
               </div>
             </button>
           </div>
@@ -173,19 +173,19 @@ export default function HomePage() {
           }}
         >
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <p className="font-serif italic text-2xl text-yellow-400 mb-4" style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
-              <h1 className="text-6xl font-black uppercase mb-4" style={{textShadow: '0 4px 8px rgba(0,0,0,0.3)'}}>MADANI ITERA</h1>
-              <p className="text-2xl font-semibold text-yellow-300 mb-6">Mahasiswa Peradaban Islam</p>
-              <p className="text-lg max-w-2xl mx-auto mb-8 opacity-90 leading-relaxed">
+            <div className="text-center max-w-4xl mx-auto">
+              <p className="font-serif italic text-lg sm:text-xl lg:text-2xl text-yellow-400 mb-4" style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase mb-4" style={{textShadow: '0 4px 8px rgba(0,0,0,0.3)'}}>MADANI ITERA</h1>
+              <p className="text-lg sm:text-xl md:text-2xl font-semibold text-yellow-300 mb-6">Mahasiswa Peradaban Islam</p>
+              <p className="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto mb-8 opacity-90 leading-relaxed">
                 Membangun generasi muslim yang berakhlak mulia, berilmu, dan berperadaban melalui pendidikan, dakwah, dan pemberdayaan masyarakat
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="/tentang" className="inline-flex items-center gap-2 bg-yellow-500 text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider border-2 border-yellow-500 hover:bg-yellow-400 hover:border-yellow-400 transition-all">
+                <a href="/tentang" className="inline-flex items-center gap-2 bg-yellow-500 text-white px-6 sm:px-8 py-3 rounded-full font-bold uppercase text-xs sm:text-sm tracking-wider border-2 border-yellow-500 hover:bg-yellow-400 hover:border-yellow-400 transition-all">
                   <i className="fas fa-info-circle"></i>
                   Tentang Kami
                 </a>
-                <a href="#footer" className="inline-flex items-center gap-2 bg-transparent text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider border-2 border-white hover:bg-white hover:text-green-800 transition-all">
+                <a href="#footer" className="inline-flex items-center gap-2 bg-transparent text-white px-6 sm:px-8 py-3 rounded-full font-bold uppercase text-xs sm:text-sm tracking-wider border-2 border-white hover:bg-white hover:text-green-800 transition-all">
                   <i className="fas fa-envelope"></i>
                   Hubungi Kami
                 </a>
@@ -202,18 +202,44 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3"><i className="fas fa-eye text-yellow-500"></i> Visi</h3>
-                  <p className="text-gray-600 leading-relaxed">Menjadikan LDK Madani itera sebagai rumah dan sarana dakwah berkelanjutan yang aktif, inovatif, dan inklusif untuk mewujudkan kader yang berkualitas dan berintegritas berlandaskan Al-Quran dan Sunnah.</p>
+                  <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+                    <i className="fas fa-eye text-yellow-500"></i> 
+                    Visi
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Menjadikan LDK Madani itera sebagai rumah dan sarana dakwah berkelanjutan yang aktif, inovatif, dan inklusif untuk mewujudkan kader yang berkualitas dan berintegritas berlandaskan Al-Quran dan Sunnah.
+                  </p>
                 </div>
                 <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3"><i className="fas fa-bullseye text-yellow-500"></i> Misi</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+                    <i className="fas fa-bullseye text-yellow-500"></i> 
+                    Misi
+                  </h3>
                   <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Menjadikan Alquran dan Sunnah sebagai landasan utama LDK Madani ITERA dalam kehidupan sehari-hari.</li>
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Menguatkan ukhuwah islamiyah sehingga tercipta rasa komitmen dalam setiap kader untuk menjalankan perannya</li>
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Meningkatkan sistem pembinaan yang berkualitas dan terstruktur.</li>
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Mengembangkan metode dakwah melalui proses penuntutan ilmu, pengamalan konsisten dan penyampaian ilmu yang tepat sasaran.</li>
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Memperluas jaringan kolaborasi dakwah baik internal maupun eksternal.</li>
-                    <li className="flex items-start"><span className="text-yellow-500 mr-3 mt-1">✦</span>Memberikan kontribusi terhadap isu permasalahan Islam baik dari cakupan lokal maupun global.</li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Menjadikan Alquran dan Sunnah sebagai landasan utama LDK Madani ITERA dalam kehidupan sehari-hari.
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Menguatkan ukhuwah islamiyah sehingga tercipta rasa komitmen dalam setiap kader untuk menjalankan perannya
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Meningkatkan sistem pembinaan yang berkualitas dan terstruktur.
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Mengembangkan metode dakwah melalui proses penuntutan ilmu, pengamalan konsisten dan penyampaian ilmu yang tepat sasaran.
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Memperluas jaringan kolaborasi dakwah baik internal maupun eksternal.
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-3 mt-1">✦</span>
+                      Memberikan kontribusi terhadap isu permasalahan Islam baik dari cakupan lokal maupun global.
+                    </li>
                   </ul>
                 </div>
                 <a href="/tentang" className="inline-flex items-center gap-2 bg-green-800 text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider hover:bg-green-700 transition-all">
@@ -221,9 +247,9 @@ export default function HomePage() {
                   Kenalan Lebih Dalam
                 </a>
               </div>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center lg:order-last order-first">
                 <div className="w-[clamp(200px,40vw,300px)] h-[clamp(200px,40vw,300px)] bg-gradient-to-br from-green-800 to-green-600 rounded-full flex items-center justify-center p-10 shadow-xl">
-                  <Image src="/images/logo-madani.png" alt="UKM Madani Logo" width={300} height={300} className="w-full h-full object-contain" />
+                  <Image src="/images/logo-madani.png" alt="UKM Madani Logo" width={300} height={300} className="w-full h-full object-contain animate-pulse-custom" />
                 </div>
               </div>
             </div>
@@ -306,7 +332,7 @@ export default function HomePage() {
               )}
             </div>
             <div className="text-center mt-12">
-              <a href="/artikel" className="inline-flex items-center gap-2 bg-yellow-500 text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider hover:bg-yellow-400 transition-all">
+              <a href="/artikel" className="inline-flex items-center gap-2 bg-green-800 text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider hover:bg-green-700 transition-all">
                 <i className="fas fa-book-open"></i>
                 Lihat Semua Artikel
               </a>
@@ -418,57 +444,88 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer id="footer" className="bg-gray-800 text-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
-            <div>
-              <div className="mb-4 flex justify-center md:justify-start">
-                  <Image src="/images/logo-madani.png" alt="UKM Madani Logo" width={60} height={60} className="w-[60px] h-[60px]" />
+      <footer id="footer" className="bg-gray-900 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-[2fr_1fr_1fr_1fr] md:grid-cols-2 gap-12 mb-12 items-start">
+            <div className="text-center">
+              <div className="flex flex-col items-center justify-center mb-4">
+                <Image 
+                  src="/images/logo-madani.png" 
+                  alt="UKM Madani Logo" 
+                  width={60} 
+                  height={60} 
+                  className="w-[60px] h-[60px] object-contain mb-2" 
+                />
               </div>
-              <h3 className="text-xl font-bold text-yellow-400 mb-4">UKM Madani</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <h3 className="text-yellow-400 mb-4 font-bold text-2xl">UKM Madani</h3>
+              <p className="leading-relaxed opacity-90 mb-6 max-w-md mx-auto">
                 Mahasiswa Peradaban Islam yang berkomitmen membangun generasi muslim yang berakhlak mulia, berilmu, dan berperadaban.
               </p>
-              <div className="flex justify-center md:justify-start gap-4 mt-6">
-                <a href="https://www.facebook.com/MadaniItera/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-blue-600 transition-colors"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/madaniitera/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-pink-600 transition-colors"><i className="fab fa-instagram"></i></a>
-                <a href="https://x.com/madaniitera" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-blue-400 transition-colors"><i className="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/c/MadaniItera" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-red-600 transition-colors"><i className="fab fa-youtube"></i></a>
+              
+              <div className="flex justify-center gap-3">
+                <a href="https://www.facebook.com/MadaniItera/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg text-xl">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/madaniitera/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg text-xl">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="https://x.com/madaniitera" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg text-xl">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/c/MadaniItera" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg text-xl">
+                  <i className="fab fa-youtube"></i>
+                </a>
+                <a href="https://wa.me/message/V63DAEQVVY7EL1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-xl hover:transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg text-xl">
+                  <i className="fab fa-whatsapp"></i>
+                </a>
               </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Link Cepat</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Beranda</a></li>
-                <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Tentang</a></li>
-                <li><a href="#news" className="text-gray-400 hover:text-white transition-colors">Berita</a></li>
-                <li><a href="#articles" className="text-gray-400 hover:text-white transition-colors">Artikel</a></li>
-                <li><a href="#gallery" className="text-gray-400 hover:text-white transition-colors">Galeri</a></li>
-                <li><a href="#donation" className="text-gray-400 hover:text-white transition-colors">Infaq</a></li>
+            
+            <div className="text-center lg:text-left">
+              <h4 className="text-yellow-400 mb-5 font-bold text-lg">Link Cepat</h4>
+              <ul className="space-y-2">
+                <li><a href="#home" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-home text-yellow-400 w-4 text-center"></i> Beranda</a></li>
+                <li><a href="#about" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-info-circle text-yellow-400 w-4 text-center"></i> Tentang</a></li>
+                <li><a href="#news" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-newspaper text-yellow-400 w-4 text-center"></i> Berita</a></li>
+                <li><a href="#articles" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-book-open text-yellow-400 w-4 text-center"></i> Artikel</a></li>
+                <li><a href="#gallery" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-images text-yellow-400 w-4 text-center"></i> Galeri</a></li>
+                <li><a href="#donation" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-envelope text-yellow-400 w-4 text-center"></i> Infaq</a></li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Program Kami</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="text-gray-400">ONFIRE</li>
-                <li className="text-gray-400">ABATA (Aksi Bina TPA)</li>
-                <li className="text-gray-400">GEMAR (Gerakan Menutup Aurat)</li>
-                <li className="text-gray-400">Madani Goes To School</li>
-                <li className="text-gray-400">SAKURA (Seminar Kemuslimahan)</li>
+            
+            <div className="text-center lg:text-left">
+              <h4 className="text-yellow-400 mb-5 font-bold text-lg">Program Kami</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-mosque text-yellow-400 w-4 text-center"></i> Kajian Rutin</a></li>
+                <li><a href="#" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-users text-yellow-400 w-4 text-center"></i> Mentoring</a></li>
+                <li><a href="#" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-hand-holding-heart text-yellow-400 w-4 text-center"></i> Bakti Sosial</a></li>
+                <li><a href="#" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-graduation-cap text-yellow-400 w-4 text-center"></i> Pelatihan</a></li>
+                <li><a href="#" className="text-white opacity-80 hover:opacity-100 hover:text-yellow-400 transition-all duration-300 hover:transform hover:translate-x-1 flex items-center gap-2 py-1 justify-center lg:justify-start"><i className="fas fa-lightbulb text-yellow-400 w-4 text-center"></i> Workshop</a></li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Kontak Info</h3>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center justify-center md:justify-start gap-3"><i className="fas fa-map-marker-alt text-yellow-400"></i><span className="text-gray-400">Institut Teknologi Sumatera</span></li>
-                <li className="flex items-center justify-center md:justify-start gap-3"><i className="fas fa-phone text-yellow-400"></i><span className="text-gray-400">+62 878-8945-2909</span></li>
-                <li className="flex items-center justify-center md:justify-start gap-3"><i className="fas fa-envelope text-yellow-400"></i><span className="text-gray-400">madani@lk.itera.ac.id</span></li>
-                <li className="flex items-center justify-center md:justify-start gap-3"><i className="fas fa-clock text-yellow-400"></i><span className="text-gray-400">Sen-Jum: 08:00 - 17:00</span></li>
-              </ul>
+            
+            <div className="text-center lg:text-left">
+              <h4 className="text-yellow-400 mb-5 font-bold text-lg">Kontak Kami</h4>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
+                  <i className="fas fa-map-marker-alt text-yellow-400 w-5 text-center"></i>
+                  <span>Institut Teknologi Sumatera</span>
+                </div>
+                <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
+                  <i className="fas fa-envelope text-yellow-400 w-5 text-center"></i>
+                  <span>madaniitera@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
+                  <i className="fas fa-phone text-yellow-400 w-5 text-center"></i>
+                  <span>+62 878-8945-2909</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
-            <p>&copy; {new Date().getFullYear()} UKM Madani ITERA. All rights reserved. Created with ❤️ by Madani Web Division.</p>
+          
+          <div className="border-t border-white border-opacity-10 pt-8 text-center opacity-80">
+            <p>&copy; {new Date().getFullYear()} UKM Madani ITERA. All rights reserved.</p>
+            <p>Created with ❤️ by Madani Web Division</p>
           </div>
         </div>
       </footer>

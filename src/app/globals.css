@@ -37,6 +37,33 @@ body {
   unicode-bidi: bidi-override;
 }
 
+/* Logo Animations - matching PHP version */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-5px); 
+  }
+}
+
+@keyframes pulse-custom {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-custom {
+  animation: pulse-custom 4s ease-in-out infinite;
+}
+
 /* Custom utilities */
 .line-clamp-2 {
   overflow: hidden;
