@@ -1,11 +1,11 @@
 
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
+import connectDB from '@/lib/mongodb';
 import Galeri from '@/models/Galeri';
 
 export async function GET(request: Request) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const { searchParams } = new URL(request.url);
     const limit = parseInt(searchParams.get('limit') || '6');

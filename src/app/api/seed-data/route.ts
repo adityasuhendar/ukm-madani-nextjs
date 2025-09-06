@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
+import connectDB from '@/lib/mongodb';
 import Berita from '@/models/Berita';
 import Artikel from '@/models/Artikel';
 import Galeri from '@/models/Galeri';
 
 export async function GET() {
   try {
-    await connectToDatabase();
+    await connectDB();
 
     // Clear existing data (optional, for fresh seeding)
     await Berita.deleteMany({});

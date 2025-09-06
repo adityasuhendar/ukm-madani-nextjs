@@ -1,11 +1,11 @@
 
 import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
+import connectDB from '@/lib/mongodb';
 import Artikel from '@/models/Artikel';
 
 export async function GET(request: Request) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const { searchParams } = new URL(request.url);
     const limit = parseInt(searchParams.get('limit') || '3');
