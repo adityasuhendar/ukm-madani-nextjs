@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { formatTanggalIndonesia } from '@/utils/dateFormat';
 import { generatePlaceholder } from '@/utils/imageUtils';
 import { Berita, Artikel, Galeri } from '@/types';
@@ -118,12 +119,12 @@ export default function HomePage() {
         }`}>
           <div className="flex justify-between items-center">
             <a href="#home" className="flex items-center gap-3 text-green-800 font-serif text-xl font-bold">
-              <img 
+              <Image 
                 src="/images/logo-madani.png" 
                 alt="UKM Madani Logo"
-                className={`float-animation object-contain transition-all duration-300 ${
-                  headerScrolled ? 'w-8 h-8' : 'w-10 h-10'
-                }`}
+                width={headerScrolled ? 32 : 40}
+                height={headerScrolled ? 32 : 40}
+                className="float-animation object-contain transition-all duration-300"
               />
               <span>UKM MADANI</span>
             </a>
@@ -222,7 +223,7 @@ export default function HomePage() {
               </div>
               <div className="flex justify-center items-center">
                 <div className="w-[clamp(200px,40vw,300px)] h-[clamp(200px,40vw,300px)] bg-gradient-to-br from-green-800 to-green-600 rounded-full flex items-center justify-center p-10 shadow-xl">
-                  <img src="/images/logo-madani.png" alt="UKM Madani Logo" className="w-full h-full object-contain" />
+                  <Image src="/images/logo-madani.png" alt="UKM Madani Logo" width={300} height={300} className="w-full h-full object-contain" />
                 </div>
               </div>
             </div>
@@ -251,7 +252,7 @@ export default function HomePage() {
                 beritaTerbaru.map((item) => (
                   <div key={item._id} className="bg-white rounded-xl shadow-lg overflow-hidden group">
                     <div className="overflow-hidden h-48">
-                      <img src={item.gambar || generatePlaceholder('berita', item.judul)} alt={item.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <Image src={item.gambar || generatePlaceholder('berita', item.judul)} alt={item.judul} width={400} height={200} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="p-6">
                       <div className="text-sm text-gray-500 mb-2">{formatTanggalIndonesia(item.tanggal_publish)}</div>
@@ -293,7 +294,7 @@ export default function HomePage() {
                 artikelTerbaru.map((item) => (
                   <div key={item._id} className="bg-white rounded-xl shadow-lg overflow-hidden group">
                     <div className="overflow-hidden h-48">
-                      <img src={item.gambar || generatePlaceholder('artikel', item.judul)} alt={item.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <Image src={item.gambar || generatePlaceholder('artikel', item.judul)} alt={item.judul} width={400} height={200} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="p-6">
                       <div className="text-sm text-gray-500 mb-2">{formatTanggalIndonesia(item.tanggal_publish)}</div>
@@ -327,7 +328,7 @@ export default function HomePage() {
               ) : (
                 galeriTerbaru.map((item) => (
                   <a key={item._id} href={item.gambar[0]} target="_blank" rel="noopener noreferrer" className="block relative rounded-lg overflow-hidden h-64 group">
-                    <img src={item.gambar[0] || generatePlaceholder('galeri', item.judul)} alt={item.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <Image src={item.gambar[0] || generatePlaceholder('galeri', item.judul)} alt={item.judul} width={400} height={256} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-300 flex flex-col justify-end p-4">
                       <h3 className="font-bold text-white text-lg">{item.judul}</h3>
                       <p className="text-sm text-gray-300">{formatTanggalIndonesia(item.tanggal_kegiatan)}</p>
@@ -354,15 +355,17 @@ export default function HomePage() {
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Kritik & Saran Website</h3>
                 <p className="text-gray-500 mb-6">Masukan Anda sangat berharga bagi perkembangan website kami.</p>
-                <iframe 
-                  src="https://forms.gle/QwkuV5RcX61eqcN2A" 
-                  width="100%" 
-                  height="400" 
-                  frameBorder="0" 
-                  marginHeight="0" 
-                  marginWidth="0"
-                  className="rounded-md"
-                >Loading…</iframe>
+<iframe 
+  src="https://forms.gle/QwkuV5RcX61eqcN2A"
+  width="100%"
+  height={400}
+  frameBorder={0}
+  marginHeight={0}
+  marginWidth={0}
+  className="rounded-md"
+>
+  Loading…
+</iframe>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Informasi Rekening</h3>
@@ -420,7 +423,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
             <div>
               <div className="mb-4 flex justify-center md:justify-start">
-                  <img src="/images/logo-madani.png" alt="UKM Madani Logo" className="w-[60px] h-[60px]" />
+                  <Image src="/images/logo-madani.png" alt="UKM Madani Logo" width={60} height={60} className="w-[60px] h-[60px]" />
               </div>
               <h3 className="text-xl font-bold text-yellow-400 mb-4">UKM Madani</h3>
               <p className="text-gray-400 text-sm leading-relaxed">

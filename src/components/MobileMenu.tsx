@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import Image from 'next/image';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -55,19 +56,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center gap-3">
-            <img 
+            <Image 
               src="/images/logo-madani.png" 
               alt="UKM Madani Logo"
+              width={40}
+              height={40}
               className="w-10 h-10"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                target.nextElementSibling?.classList.remove('hidden');
-              }}
             />
-            <div className="w-10 h-10 bg-gradient-to-br from-green-800 to-green-600 rounded-full flex items-center justify-center hidden">
-              <span className="text-white font-bold text-lg">M</span>
-            </div>
             <span className="text-xl font-bold text-green-800 font-serif">UKM MADANI</span>
           </div>
           <button 

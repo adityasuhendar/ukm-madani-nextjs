@@ -24,10 +24,11 @@ export async function GET() {
       data: beritaList
     });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return NextResponse.json({
       success: false,
-      error: error.message
+      error: errorMessage
     }, { status: 500 });
   }
 }
