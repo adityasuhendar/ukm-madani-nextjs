@@ -407,8 +407,8 @@ export default function HomePage() {
             </div>
             <div className="grid lg:grid-cols-2 gap-12">
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">Kritik & Saran Website</h3>
-                <p className="text-gray-500 mb-6">Masukan Anda sangat berharga bagi perkembangan website kami.</p>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2 text-center">Kritik & Saran Website</h3>
+                <p className="text-gray-500 mb-6 text-center">Masukan Anda sangat berharga bagi perkembangan website kami.</p>
                 
                 <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-2xl border-2 border-dashed border-green-200 text-center">
                   <div className="mb-6">
@@ -434,8 +434,8 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">Informasi Rekening</h3>
-                <p className="text-gray-500 mb-6">Transfer ke salah satu rekening berikut:</p>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2 text-center">Informasi Rekening</h3>
+                <p className="text-gray-500 mb-6 text-center">Transfer ke salah satu rekening berikut:</p>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between gap-4 p-4 border rounded-lg">
                     <div className="flex items-center gap-4">
@@ -549,15 +549,34 @@ export default function HomePage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
                   <i className="fas fa-map-marker-alt text-yellow-400 w-5 text-center"></i>
-                  <span>Institut Teknologi Sumatera</span>
+                  <a 
+                    href="https://itera.ac.id" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-yellow-400 transition-colors duration-300 hover:underline"
+                  >
+                    Institut Teknologi Sumatera
+                  </a>
                 </div>
                 <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
                   <i className="fas fa-envelope text-yellow-400 w-5 text-center"></i>
-                  <span>madaniitera@gmail.com</span>
+                  <a 
+                    href="mailto:madaniitera@gmail.com"
+                    className="hover:text-yellow-400 transition-colors duration-300 hover:underline"
+                  >
+                    madaniitera@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center gap-3 text-white opacity-80 hover:opacity-100 transition-all duration-300 hover:transform hover:translate-x-1 justify-center lg:justify-start">
                   <i className="fas fa-phone text-yellow-400 w-5 text-center"></i>
-                  <span>+62 878-8945-2909</span>
+                  <a 
+                    href="https://wa.me/6285117650610"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-yellow-400 transition-colors duration-300 hover:underline"
+                  >
+                    +62 851-1765-0610
+                  </a>
                 </div>
               </div>
             </div>
