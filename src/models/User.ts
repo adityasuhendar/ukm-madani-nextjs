@@ -1,7 +1,14 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
 
 const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 50
+  },
   email: {
     type: String,
     required: true,
@@ -12,26 +19,38 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6
+    minlength: 6,
+    select: false // Don't include password in queries by default
+  },
+  nama_lengkap: {
+    type: String,
+    required: true,
+    trim: true
   },
   role: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user'
+    enum: ['admin', 'super_admin'],
+    default: 'admin'
+  },
+  status: {
+    type: String,
+    enum: ['aktif', 'nonaktif'],
+    default: 'aktif'
+  },
+  last_login: {
+    type: Date,
+    default: null
+  },
+  login_count: {
+    type: Number,
+    default: 0
   }
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
-UserSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
-});
-
-UserSchema.methods.comparePassword = async function(candidatePassword: string) {
-  return await bcrypt.compare(candidatePassword, this.password);
-};
+// Create indexes for better performance
+UserSchema.index({ username: 1 });
+UserSchema.index({ email: 1 });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);
