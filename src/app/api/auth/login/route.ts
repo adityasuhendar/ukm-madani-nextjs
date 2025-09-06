@@ -171,9 +171,10 @@ export async function POST(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      path: '/admin'
+      path: '/' // Change from '/admin' to '/' untuk akses global
     });
 
+    console.log('Login successful for user:', user.username);
     return response;
 
   } catch (error: unknown) {

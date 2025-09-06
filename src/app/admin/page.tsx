@@ -41,10 +41,13 @@ export default function AdminLogin() {
       });
 
       const data = await response.json();
+      console.log('Login response:', data);
 
       if (data.success) {
+        console.log('Login successful, redirecting to dashboard...');
         router.push('/admin/dashboard');
       } else {
+        console.log('Login failed:', data.message);
         setError(data.message || 'Login gagal. Silakan coba lagi.');
         setAttempts(prev => prev + 1);
         
@@ -186,19 +189,6 @@ export default function AdminLogin() {
           Kembali ke Website
         </Link>
 
-        {/* Security Features */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <h4 className="text-green-800 text-sm font-medium mb-4 flex items-center justify-center gap-2">
-            <i className="fas fa-shield-alt"></i>
-            Fitur Keamanan
-          </h4>
-          <div className="flex flex-wrap gap-2 justify-center">
-            <span className="bg-green-50 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">CSRF Protection</span>
-            <span className="bg-green-50 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">Rate Limiting</span>
-            <span className="bg-green-50 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">Session Security</span>
-            <span className="bg-green-50 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">IP Monitoring</span>
-          </div>
-        </div>
       </div>
 
       <style jsx>{`

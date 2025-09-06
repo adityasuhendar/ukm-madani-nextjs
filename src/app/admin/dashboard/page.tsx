@@ -29,28 +29,79 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // Prevent caching
   useEffect(() => {
-    // Check if user is authenticated
-    const checkAuth = async () => {
-      try {
-        const response = await fetch('/api/auth/verify');
-        if (!response.ok) {
-          router.push('/admin');
-          return;
+    if (typeof window !== 'undefined') {
+      // Add cache control meta tags dynamically
+      const metaCacheControl = document.createElement('meta');
+      metaCacheControl.httpEquiv = 'Cache-Control';
+      metaCacheControl.content = 'no-cache, no-store, must-revalidate';
+      document.head.appendChild(metaCacheControl);
+
+      const metaPragma = document.createElement('meta');
+      metaPragma.httpEquiv = 'Pragma';
+      metaPragma.content = 'no-cache';
+      document.head.appendChild(metaPragma);
+
+      const metaExpires = document.createElement('meta');
+      metaExpires.httpEquiv = 'Expires';
+      metaExpires.content = '0';
+      document.head.appendChild(metaExpires);
+
+      return () => {
+        document.head.removeChild(metaCacheControl);
+        document.head.removeChild(metaPragma);
+        document.head.removeChild(metaExpires);
+      };
+    }
+  }, []);
+
+  const checkAuth = async () => {
+    try {
+      console.log('Checking authentication...');
+      const response = await fetch('/api/auth/verify', {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache'
         }
-        const data = await response.json();
-        setUser(data.user);
-        
-        // Load dashboard stats
-        await loadStats();
-      } catch {
+      });
+      console.log('Auth verify response status:', response.status);
+      
+      if (!response.ok) {
+        console.log('Auth failed, redirecting to login...');
         router.push('/admin');
-      } finally {
-        setLoading(false);
+        return;
+      }
+      const data = await response.json();
+      console.log('Auth successful:', data);
+      setUser(data.user);
+      
+      // Load dashboard stats
+      await loadStats();
+    } catch (error) {
+      console.log('Auth error:', error);
+      router.push('/admin');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    checkAuth();
+
+    // Re-check auth when page becomes visible (back button fix)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        console.log('Page visible, re-checking auth...');
+        checkAuth();
       }
     };
 
-    checkAuth();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, [router]);
 
   const loadStats = async () => {
@@ -81,10 +132,30 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      router.push('/admin');
+      console.log('Logging out...');
+      
+      // Call logout API to clear server-side session
+      await fetch('/api/auth/logout', { 
+        method: 'POST',
+        cache: 'no-store'
+      });
+      
+      // Clear any client-side data
+      setUser(null);
+      setStats({
+        totalBerita: 0,
+        totalArtikel: 0,
+        totalGaleri: 0,
+        totalUsers: 0
+      });
+      
+      // Force redirect with replace to prevent back button
+      window.location.replace('/admin');
+      
     } catch (error) {
       console.error('Logout failed:', error);
+      // Force redirect even if logout API fails
+      window.location.replace('/admin');
     }
   };
 
